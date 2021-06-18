@@ -10,35 +10,35 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Flutter MyPicker',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyPicker(title: 'Flutter MyPicker'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+class MyPicker extends StatefulWidget {
+  MyPicker({Key key, this.title}) : super(key: key);
   final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _MyPickerState createState() => _MyPickerState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyPickerState extends State<MyPicker> {
   File _image;
-  ImagePicker imagePicker;
+  ImagePicker MyPicker;
 
   @override
   void initState() {
     super.initState();
-    imagePicker = ImagePicker();
+    MyPicker = ImagePicker();
   }
 
   Future<void> _chooseGallery() async {
-    PickedFile pickedFile = await imagePicker.getImage(source: ImageSource.gallery);
+    PickedFile pickedFile = await MyPicker.getImage(source: ImageSource.gallery);
     setState(() {
       _image = File(pickedFile.path);
     });
@@ -48,7 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future<void> _chooseCamera() async {
     PickedFile pickedFile =
-        await imagePicker.getImage(source: ImageSource.camera);
+        await MyPicker.getImage(source: ImageSource.camera);
     setState(() {
       _image = File(pickedFile.path);
     });
